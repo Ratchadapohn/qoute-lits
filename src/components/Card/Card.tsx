@@ -1,19 +1,14 @@
 "use client";
-import React, { useState, useCallback, useMemo } from "react";
+
+import React, { useState } from "react";
 import useFetchQuotes from "../../hooks/useFetchQuotes";
 import useFetchImages from "../../hooks/useFetchImages";
 import LazyImage from "../lazyLoading/LazyImage";
+import ChartPopup from "../chartpopup/ChartPopup";
 import "./Card.css";
 import { BiSolidHeartCircle } from "react-icons/bi";
 import { FaStar } from "react-icons/fa6";
 import { FcSearch } from "react-icons/fc";
-
-interface Quote {
-  quote: string;
-  author: string;
-  book?: string;
-  likeCount: number;
-}
 
 const Card: React.FC = () => {
   const {
@@ -30,47 +25,28 @@ const Card: React.FC = () => {
   const [likedQuotes, setLikedQuotes] = useState<Set<number>>(new Set());
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filterAuthor, setFilterAuthor] = useState<string>("");
-  const [expandedQuoteIndex, setExpandedQuoteIndex] = useState<number | null>(
-    null
-  );
+  const [showChartPopup, setShowChartPopup] = useState<boolean>(false);
 
-  const handleLikeClick = useCallback((index: number) => {
+  const handleLikeClick = (index: number) => {
     setLikedQuotes((prev) => {
       const updatedLikes = new Set(prev);
       if (updatedLikes.has(index)) {
         updatedLikes.delete(index);
       } else {
         updatedLikes.add(index);
+
+        setShowChartPopup(true);
       }
       return updatedLikes;
     });
-  }, []);
+  };
 
-  const handleQuoteClick = useCallback((index: number) => {
-    setExpandedQuoteIndex((prevIndex) => (prevIndex === index ? null : index));
-  }, []);
-
-  const filteredQuotes = useMemo(() => {
-    return quotes.filter((quote) => {
-      const matchesSearch = quote.quote
-        .toLowerCase()
-        .includes(searchQuery.toLowerCase());
-      const matchesAuthor = filterAuthor
-        ? quote.author.toLowerCase() === filterAuthor.toLowerCase()
-        : true;
-      return matchesSearch && matchesAuthor;
-    });
-  }, [quotes, searchQuery, filterAuthor]);
-
-  const authors = Array.from(new Set(quotes.map((quote) => quote.author)));
+  const handleCloseChartPopup = () => {
+    setShowChartPopup(false);
+  };
 
   if (quotesLoading || imagesLoading) {
-    return (
-      <p className="loading-icon">
-        Loading...
-        {/* <LoadingIcons.Bars /> */}
-      </p>
-    );
+    return <p className="loading-icon">Loading...</p>;
   }
 
   if (quotesError) {
@@ -80,6 +56,26 @@ const Card: React.FC = () => {
   if (imagesError) {
     return <p>{imagesError}</p>;
   }
+
+  const filteredQuotes = quotes.filter((quote) => {
+    const matchesSearch = quote.quote
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+    const matchesAuthor = filterAuthor
+      ? quote.author.toLowerCase() === filterAuthor.toLowerCase()
+      : true;
+    return matchesSearch && matchesAuthor;
+  });
+
+  const authors = Array.from(new Set(quotes.map((quote) => quote.author)));
+
+  const likedQuotesData = filteredQuotes
+    .filter((quote, index) => likedQuotes.has(index))
+    .map((quote) => quote.likeCount);
+
+  const likedQuotesLabels = filteredQuotes
+    .filter((quote, index) => likedQuotes.has(index))
+    .map((quote) => quote.quote);
 
   return (
     <>
@@ -112,11 +108,7 @@ const Card: React.FC = () => {
       </div>
       <div className="card-container">
         {filteredQuotes.map((quote, index) => (
-          <div
-            key={index}
-            className="card"
-            onClick={() => handleQuoteClick(index)}
-          >
+          <div key={index} className="card">
             <div className="score-icon">
               <div className="random-num">
                 {Math.floor(Math.random() * 90) + 10}
@@ -125,10 +117,7 @@ const Card: React.FC = () => {
             </div>
             <div
               className="like-icon"
-              onClick={(e) => {
-                e.stopPropagation(); // Prevent click event from bubbling up to the card
-                handleLikeClick(index);
-              }}
+              onClick={() => handleLikeClick(index)}
               style={{ cursor: "pointer" }}
             >
               <BiSolidHeartCircle
@@ -136,7 +125,6 @@ const Card: React.FC = () => {
                   likedQuotes.has(index) ? "rgb(206, 134, 206)" : "#886b2c"
                 }
               />
-              <span>{quote.likeCount}</span> {/* Display like count */}
             </div>
             {images[index] && (
               <LazyImage src={images[index].src} alt={`Image ${index}`} />
@@ -146,27 +134,16 @@ const Card: React.FC = () => {
               <div className="author">{quote.author}</div>
               {quote.book && <div className="book">Book: {quote.book}</div>}
             </div>
-            {expandedQuoteIndex === index && (
-              <div className="quote-details">
-                <p>
-                  <strong>Likes:</strong> {quote.likeCount}
-                </p>
-                <p>
-                  <strong>Quote:</strong> {quote.quote}
-                </p>
-                <p>
-                  <strong>Author:</strong> {quote.author}
-                </p>
-                {quote.book && (
-                  <p>
-                    <strong>Book:</strong> {quote.book}
-                  </p>
-                )}
-              </div>
-            )}
           </div>
         ))}
       </div>
+      {showChartPopup && (
+        <ChartPopup
+          data={likedQuotesData}
+          labels={likedQuotesLabels}
+          onClose={handleCloseChartPopup}
+        />
+      )}
     </>
   );
 };
