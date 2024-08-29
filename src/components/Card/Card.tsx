@@ -77,8 +77,9 @@ const Card: React.FC<CardProps> = ({ onRankClick, showChart }) => {
   const likedQuoteData = filteredQuotes.filter((_, index) =>
     likedQuotes.has(index)
   );
-  const chartData = likedQuoteData.map((quote) => quote.likeCount); // Assuming `likeCount` exists in your quote
-  const chartLabels = likedQuoteData.map((quote) => quote.quote);
+
+  const chartData: number[] = likedQuoteData.map(() => 1); // Example data, replace with actual like counts if available
+  const chartLabels: string[] = likedQuoteData.map((quote) => quote.quote);
 
   return (
     <>

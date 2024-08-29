@@ -1,4 +1,4 @@
-"use client"; /
+"use client";
 import React, { useState, useCallback } from "react";
 import Navbar from "../src/components/Navbar/Navbar";
 import Card from "../src/components/Card/Card";
