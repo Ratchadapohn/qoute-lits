@@ -1,4 +1,3 @@
-"use client";
 import { useState, useEffect } from "react";
 
 interface Image {
@@ -36,8 +35,14 @@ const useFetchImages = (count: number) => {
           throw new Error("Unexpected response format");
         }
       } catch (error) {
-        console.error("Failed to fetch images:", error);
-        setError("Failed to fetch images: " + error.message);
+        // Type guard to check if error is an instance of Error
+        if (error instanceof Error) {
+          console.error("Failed to fetch images:", error);
+          setError("Failed to fetch images: " + error.message);
+        } else {
+          console.error("Failed to fetch images:", error);
+          setError("Failed to fetch images: Unknown error");
+        }
         setLoading(false);
       }
     };

@@ -44,7 +44,7 @@ const ChartPopup: React.FC<ChartPopupProps> = ({ data, labels, onClose }) => {
     responsive: true,
     plugins: {
       legend: {
-        position: "bottom",
+        position: "bottom" as const,
       },
       tooltip: {
         callbacks: {

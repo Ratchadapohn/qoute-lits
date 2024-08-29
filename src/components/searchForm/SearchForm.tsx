@@ -5,26 +5,28 @@ import useFetchImages from "../../hooks/useFetchImages";
 import { BiSolidHeartCircle } from "react-icons/bi";
 import { FaStar } from "react-icons/fa";
 
-const SearchForm = ({ setShowSearch }) => {
-  const [searchQuote, setSearchQuote] = useState("");
+interface SearchFormProps {
+  setShowSearch: (show: boolean) => void;
+}
+
+const SearchForm: React.FC<SearchFormProps> = ({ setShowSearch }) => {
+  const [searchQuote, setSearchQuote] = useState<string>("");
   const { quotes } = useFetchQuotes();
   const { images, error: imageError } = useFetchImages(quotes.length); // Fetch images based on the number of quotes
-  const [filteredResults, setFilteredResults] = useState([]);
+  const [filteredResults, setFilteredResults] = useState<any[]>([]);
 
   useEffect(() => {
-    // Combine quotes and images
     const combinedResults = quotes.map((quote, index) => ({
       ...quote,
-      image: images[index]?.src || "", // Ensure there's an image or fallback to an empty string
+      image: images[index]?.src || "",
     }));
     setFilteredResults(combinedResults);
   }, [quotes, images]);
 
-  const handleSearchChange = (e) => {
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchQuote(value);
 
-    // Filter quotes based on the search term
     const results = filteredResults.filter((quote) =>
       quote.quote.toLowerCase().includes(value.toLowerCase())
     );

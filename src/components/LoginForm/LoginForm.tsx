@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import "./LoginForm.css";
 import { MdCancel } from "react-icons/md";
 
@@ -36,10 +36,15 @@ const LoginForm: React.FC<LoginPopupProps> = ({ setShowLogin }) => {
         alert(response.data.message);
       }
     } catch (error) {
-      console.error("Error during registration:", error);
-      alert(
-        `Error: ${error.response?.data?.message || "Something went wrong"}`
-      );
+      if (axios.isAxiosError(error)) {
+        console.error("Error during registration:", error);
+        alert(
+          `Error: ${error.response?.data?.message || "Something went wrong"}`
+        );
+      } else {
+        console.error("Unexpected error:", error);
+        alert("An unexpected error occurred.");
+      }
     }
   };
 
