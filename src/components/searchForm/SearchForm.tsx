@@ -64,7 +64,8 @@ const SearchForm: React.FC<SearchFormProps> = ({ setShowSearch }) => {
                   <div className="no-image-placeholder">No Image</div>
                 )}
                 <div className="search-quote-text-content">
-                  <p>"{quote.quote}"</p>
+                  <p>&quot;{quote.quote}&quot;</p>
+
                   <p>- {quote.author}</p>
                 </div>
                 <div className="like-icon-serach">
