@@ -1,5 +1,5 @@
 import React from "react";
-import LazyLoad from "react-lazyload";
+import Image from "next/image";
 
 interface LazyImageProps {
   src: string;
@@ -7,9 +7,14 @@ interface LazyImageProps {
 }
 
 const LazyImage: React.FC<LazyImageProps> = ({ src, alt }) => (
-  <LazyLoad height={200} offset={100}>
-    <img src={src} alt={alt} />
-  </LazyLoad>
+  <Image
+    src={src}
+    alt={alt}
+    width={500}
+    height={300}
+    loading="lazy"
+    layout="responsive"
+  />
 );
 
 export default LazyImage;

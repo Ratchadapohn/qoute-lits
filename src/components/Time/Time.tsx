@@ -21,10 +21,10 @@ const Time: React.FC<TimeProps> = ({ format = "24-hour" }) => {
       setCurrentTime(formattedTime);
     };
 
-    updateTime(); // Initial update
-    const interval = setInterval(updateTime, 60000); // Update every minute
+    updateTime();
+    const interval = setInterval(updateTime, 60000);
 
-    return () => clearInterval(interval); // Cleanup on unmount
+    return () => clearInterval(interval);
   }, []);
 
   return <div className="time">{currentTime}</div>;

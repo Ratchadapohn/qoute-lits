@@ -23,8 +23,8 @@ const useFetchQuotes = () => {
       })
       .then((data) => {
         if (data && data.quotes) {
-          setQuotes(data.quotes); // Set all quotes
-          setLoading(false); // Set loading to false
+          setQuotes(data.quotes);
+          setLoading(false);
         } else {
           throw new Error("Unexpected response format");
         }
@@ -32,7 +32,7 @@ const useFetchQuotes = () => {
       .catch((error) => {
         console.error("Fetch Error:", error.message);
         setError("Failed to fetch quotes: " + error.message);
-        setLoading(false); // Set loading to false on error
+        setLoading(false);
       });
   }, []);
 

@@ -35,7 +35,6 @@ const useFetchImages = (count: number) => {
           throw new Error("Unexpected response format");
         }
       } catch (error) {
-        // Type guard to check if error is an instance of Error
         if (error instanceof Error) {
           console.error("Failed to fetch images:", error);
           setError("Failed to fetch images: " + error.message);

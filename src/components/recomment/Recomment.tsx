@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import useFetchQuotes from "../../hooks/useFetchQuotes";
 import useFetchImages from "../../hooks/useFetchImages";
 import "./recomment.css";
@@ -50,9 +51,11 @@ const Recomment = () => {
               <FaStar />
             </div>
             {images[index] && (
-              <img
+              <Image
                 src={images[index].src}
                 alt={`Image ${index}`}
+                width={500}
+                height={300}
                 className="recomment-image"
               />
             )}

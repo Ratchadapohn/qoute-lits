@@ -4,6 +4,7 @@ import useFetchQuotes from "../../hooks/useFetchQuotes";
 import useFetchImages from "../../hooks/useFetchImages";
 import { BiSolidHeartCircle } from "react-icons/bi";
 import { FaStar } from "react-icons/fa";
+import Image from "next/image";
 
 interface SearchFormProps {
   setShowSearch: (show: boolean) => void;
@@ -12,7 +13,7 @@ interface SearchFormProps {
 const SearchForm: React.FC<SearchFormProps> = ({ setShowSearch }) => {
   const [searchQuote, setSearchQuote] = useState<string>("");
   const { quotes } = useFetchQuotes();
-  const { images, error: imageError } = useFetchImages(quotes.length); // Fetch images based on the number of quotes
+  const { images, error: imageError } = useFetchImages(quotes.length);
   const [filteredResults, setFilteredResults] = useState<any[]>([]);
 
   useEffect(() => {
@@ -52,9 +53,11 @@ const SearchForm: React.FC<SearchFormProps> = ({ setShowSearch }) => {
             filteredResults.map((quote, index) => (
               <div key={index} className="search-quote-result-item">
                 {quote.image ? (
-                  <img
+                  <Image
                     src={quote.image}
                     alt={`Quote ${index}`}
+                    width={500}
+                    height={300}
                     className="search-quote-image"
                   />
                 ) : (
