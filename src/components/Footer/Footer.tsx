@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
       {error && <p>{error}</p>}
       {quote && (
         <div className="quote-container">
-          <p className="quote-content">&quot; {quote.content} &quot;</p>
+          <p className="quote-content">&quot;{quote.content}&quot;</p>
           <p className="quote-author"> {quote.author}</p>
         </div>
       )}
