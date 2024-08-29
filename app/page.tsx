@@ -1,5 +1,4 @@
-"use client"; // Add this line to mark the file as a client component
-
+"use client"; /
 import React, { useState, useCallback } from "react";
 import Navbar from "../src/components/Navbar/Navbar";
 import Card from "../src/components/Card/Card";

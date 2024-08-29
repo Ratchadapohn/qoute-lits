@@ -10,7 +10,12 @@ import { BiSolidHeartCircle } from "react-icons/bi";
 import { FaStar } from "react-icons/fa6";
 import { FcSearch } from "react-icons/fc";
 
-const Card: React.FC = () => {
+interface CardProps {
+  onRankClick: () => void;
+  showChart: boolean;
+}
+
+const Card: React.FC<CardProps> = ({ onRankClick, showChart }) => {
   const {
     quotes,
     error: quotesError,
@@ -69,13 +74,11 @@ const Card: React.FC = () => {
 
   const authors = Array.from(new Set(quotes.map((quote) => quote.author)));
 
-  const likedQuotesData = filteredQuotes
-    .filter((quote, index) => likedQuotes.has(index))
-    .map((quote) => quote.likeCount);
-
-  const likedQuotesLabels = filteredQuotes
-    .filter((quote, index) => likedQuotes.has(index))
-    .map((quote) => quote.quote);
+  const likedQuoteData = filteredQuotes.filter((_, index) =>
+    likedQuotes.has(index)
+  );
+  const chartData = likedQuoteData.map((quote) => quote.likeCount); // Assuming `likeCount` exists in your quote
+  const chartLabels = likedQuoteData.map((quote) => quote.quote);
 
   return (
     <>
@@ -139,8 +142,8 @@ const Card: React.FC = () => {
       </div>
       {showChartPopup && (
         <ChartPopup
-          data={likedQuotesData}
-          labels={likedQuotesLabels}
+          data={chartData}
+          labels={chartLabels}
           onClose={handleCloseChartPopup}
         />
       )}
