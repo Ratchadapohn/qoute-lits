@@ -1,0 +1,256 @@
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  padding: 20px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.card-image {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 16px;
+  margin-top: 10px;
+}
+
+.quote {
+  font-size: 1.2em;
+  margin-bottom: 8px;
+}
+
+.author {
+  font-style: italic;
+  color: #555;
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+.book {
+  font-size: 0.9em;
+  color: #777;
+  margin-top: 8px;
+}
+.like-icon {
+  position: absolute;
+  color: rgba(218, 165, 32, 0.632);
+  font-size: 40px;
+  bottom: 18px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.card-content .author {
+  background-color: rgb(124, 99, 35);
+  border-radius: 10px;
+  color: #fff;
+  padding: 2px 20px;
+  display: inline-block;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.like-icon:hover {
+  color: rgb(206, 134, 206);
+}
+.score-icon {
+  color: white;
+  position: absolute;
+  font-size: 15px;
+  top: 13px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  right: 13px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+.random-num {
+  font-size: 10px;
+}
+.header-word {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  gap: 5px;
+  margin-top: 70px;
+}
+
+.header-word h1 {
+  font-size: 70px;
+  color: #886b2c;
+  letter-spacing: -2px;
+  transform: rotate(-8deg);
+  text-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3);
+  font-weight: 700;
+  z-index: 3;
+  left: 20px;
+  position: relative;
+}
+
+.header-word h4 {
+  font-size: 15px;
+  background-color: #97c4d2;
+  color: white;
+  top: -31px;
+  transform: rotate(5deg);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding: 8px 2px;
+  font-weight: 700;
+  position: relative;
+  margin-top: -15px;
+}
+.input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.header-word h2 {
+  font-size: 50px;
+  color: #886b2c;
+  letter-spacing: 3px;
+  transform: rotate(-2deg);
+  text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+  z-index: 3;
+  position: relative;
+  margin-left: -20px;
+  right: 100px;
+  bottom: 5px;
+  font-weight: 600;
+}
+.loading-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: gray;
+}
+
+.search-filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.input,
+.search-filter select {
+  width: 100%;
+  max-width: 300px;
+  padding: 5px 10px;
+  margin: 5px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.search-filter input {
+  font-size: 14px;
+}
+
+.search-filter select {
+  font-size: 16px;
+  height: 30px;
+  background-color: #77614afe;
+  cursor: pointer;
+  color: rgb(238, 235, 228);
+  padding: 5px auto;
+}
+
+.search-filter select option {
+  font-size: 16px;
+  color: wheat;
+}
+
+@media (max-width: 768px) {
+  .card-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-container {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 5px;
+    max-width: 75%;
+    margin-top: 0;
+  }
+
+  .search-filter {
+    display: none;
+  }
+  .card {
+    width: 70%;
+  }
+  .header-word {
+    width: 200px;
+  }
+  .card-image {
+    height: 150px;
+  }
+  .header-word h4,
+  h2 {
+    display: none;
+  }
+  .card-content {
+    padding: 8px;
+  }
+
+  .quote {
+    font-size: 10px;
+  }
+
+  .author {
+    display: none;
+  }
+
+  .book {
+    font-size: 0.7em;
+  }
+
+  .like-icon {
+    font-size: 28px;
+  }
+
+  .score-icon {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+
+  .header-word h1 {
+    font-size: 40px;
+  }
+
+  .header-word h2 {
+    font-size: 30px;
+  }
+}

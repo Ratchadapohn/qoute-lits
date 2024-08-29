@@ -1,0 +1,44 @@
+.header {
+  background-image: url("/header-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 580px; /* Default height */
+  width: 100%;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.resultvote-button button {
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+  padding: 10px 50px;
+  border-radius: 10px;
+  background-color: rgb(213, 205, 187);
+  color: rgb(132, 101, 22);
+  font-weight: 300;
+  position: absolute;
+  font-size: 18px;
+  bottom: 15%;
+  left: 18%;
+}
+
+.resultvote-button button:hover {
+  background-color: rgb(154, 151, 147);
+  cursor: pointer;
+  color: white;
+}
+
+@media (max-width: 1050px) {
+  .header {
+    height: 34vw;
+  }
+  .header-container {
+    max-width: 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    max-width: 65%;
+  }
+}

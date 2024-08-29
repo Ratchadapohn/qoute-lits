@@ -1,0 +1,146 @@
+.recomment-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  height: 400px;
+}
+
+.recomment-slide {
+  display: flex;
+  width: calc(100% * 2);
+  animation: slide 20s linear infinite;
+}
+
+.recomment-text-content {
+  padding: 10px;
+}
+
+.recomment-text-content .recomment-author {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.recomment-card {
+  flex: 0 0 auto;
+  width: 250px;
+  height: 330px;
+  margin-right: 15px;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.recomment-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.recomment-card-image {
+  width: 100%;
+  height: 200px; /* Reduced image height */
+  object-fit: cover;
+}
+
+.recomment-card-text {
+  padding: 5px; /* Reduced padding */
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  border-top: 2px solid #fff;
+}
+
+.recomment-card .recomment-icon-star {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+
+.recomment-quote {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.recomment-author {
+  font-size: 12px;
+  position: relative;
+  bottom: 0;
+  padding-top: 5px;
+  margin-top: 10px;
+}
+
+.recomment-book {
+  font-size: 10px;
+}
+
+br {
+  height: 1px;
+  border: solid 1px gray;
+  margin: 10px 0;
+}
+
+.recomment-author::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: gray;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 750px) {
+  .recomment-card {
+    width: 200px;
+    height: 230px;
+    margin-right: 10px;
+  }
+
+  .recomment-card-image {
+    height: 120px;
+  }
+
+  .recomment-card-text {
+    padding: 3px;
+  }
+
+  .recomment-quote {
+    font-size: 14px;
+  }
+  .recomment-quote {
+    font-size: 8px;
+  }
+
+  .recomment-author {
+    font-size: 10px;
+  }
+
+  .recomment-book {
+    font-size: 8px;
+  }
+}

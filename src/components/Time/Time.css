@@ -1,0 +1,21 @@
+.time {
+  background-color: rgb(158, 121, 29);
+  height: 35px;
+  width: 100%;
+  color: white;
+  font-size: 15px;
+  font-weight: 800;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 768px) {
+  .time {
+    font-size: 7px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 65%;
+  }
+}

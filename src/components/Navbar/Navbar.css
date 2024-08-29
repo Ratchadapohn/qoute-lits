@@ -1,0 +1,96 @@
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: rgb(149, 122, 84);
+  padding: 10px 0;
+}
+
+.logo {
+  font-size: 27px;
+  font-weight: 400;
+}
+
+.nav-about {
+  display: flex;
+  justify-content: space-around;
+  gap: 40px;
+}
+
+.nav-icon {
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+  font-size: 32px;
+  color: rgb(149, 122, 84);
+}
+
+.nav-icon-like:hover,
+.nav-icon-account:hover {
+  color: rgb(91, 89, 127);
+  cursor: pointer;
+}
+
+.input-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+  border: solid 0.5px rgb(149, 122, 84);
+  padding: 1px 20px;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.input-nav .input-nav-left {
+  font-size: 20px;
+}
+
+.right-bar {
+  display: flex;
+  gap: 20px;
+}
+
+.author-select {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  z-index: 1000;
+}
+
+.author-select option {
+  padding: 8px;
+}
+
+@media (max-width: 768px) {
+  .nav-about {
+    display: none;
+  }
+
+  .input-nav {
+    display: none;
+  }
+
+  .right-bar {
+    display: none;
+  }
+
+  .nav-icon {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .hamburger-menu {
+    display: block;
+    font-size: 32px;
+    cursor: pointer;
+  }
+  .logo {
+    font-size: 10px;
+    justify-content: start;
+  }
+}

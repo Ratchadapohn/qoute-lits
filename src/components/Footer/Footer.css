@@ -1,0 +1,99 @@
+.footer {
+  background-color: rgb(136, 108, 37);
+  color: white;
+  padding: 20px;
+  margin-top: 40px;
+  text-align: center;
+  border-top: 1px solid #dee2e6;
+}
+
+.quote-container {
+  margin-top: 10px;
+}
+
+.quote-content {
+  font-size: 18px;
+  font-style: italic;
+}
+
+.quote-author {
+  font-size: 14px;
+}
+.quote-conten .quote-author {
+  color: white;
+}
+li {
+  cursor: pointer;
+}
+.styled-divider {
+  height: 1px;
+  background-color: wheat;
+  border: none;
+  max-width: 80%;
+  margin: 20px auto;
+}
+.contact h1 {
+  font-size: 30px;
+  font-weight: 600;
+}
+@media (max-width: 768px) {
+  .footer {
+    padding: 15px;
+    margin-top: 30px;
+    max-width: 100%;
+  }
+
+  .quote-content {
+    font-size: 10px;
+  }
+
+  .quote-author {
+    font-size: 10px;
+  }
+
+  .contact h1 {
+    font-size: 24px;
+  }
+
+  .styled-divider {
+    max-width: 90%;
+    margin: 15px auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 10px;
+    margin-top: 20px;
+    max-width: 65%;
+  }
+
+  .quote-content {
+    font-size: 10px;
+  }
+
+  .quote-author {
+    font-size: 10px;
+  }
+
+  .contact h1 {
+    font-size: 10px;
+  }
+
+  .styled-divider {
+    max-width: 95%;
+    margin: 10px auto;
+  }
+  .contact p,
+  h4,
+  h6 {
+    font-size: 8px;
+  }
+  /* .quote-container {
+    width: 180px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    text-align: center;
+  } */
+}
